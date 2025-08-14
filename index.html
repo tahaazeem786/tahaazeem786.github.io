@@ -42,11 +42,15 @@
   .btn.ghost{border:1px solid var(--border);background:color-mix(in oklab,var(--panel) 85%, transparent)}
 
   /* ---------------- Hero ---------------- */
-  .hero{display:grid;grid-template-columns:1fr;gap:18px;align-items:center;padding:72px 0 56px}
-  .display{font-size:clamp(48px,10vw,110px);line-height:1.02;letter-spacing:-.02em;margin:0;text-wrap:balance}
+  .hero{display:grid;grid-template-columns:1fr;gap:24px;align-items:center;padding:72px 0 56px}
+  @media (min-width:900px){.hero{grid-template-columns:1.2fr .8fr}}
+  .display{font-size:clamp(48px,9vw,108px);line-height:1.02;letter-spacing:-.02em;margin:0;text-wrap:balance}
   .name-gradient{background:linear-gradient(135deg,var(--brand),var(--brand2));-webkit-background-clip:text;background-clip:text;color:transparent}
   .lead{font-size:clamp(16px,2.2vw,20px);color:var(--muted);margin:6px 0 0}
   .hero-cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:14px}
+  .hero-visual{justify-self:end}
+  .photo-wrap{width:min(36vw,280px);height:min(36vw,280px);padding:4px;border-radius:28px;background:linear-gradient(135deg,var(--brand),var(--brand2));box-shadow:var(--shadow)}
+  .photo{width:100%;height:100%;object-fit:cover;border-radius:24px;display:block}
 
   /* ---------------- Sections ---------------- */
   section{padding:32px 0}
@@ -88,6 +92,7 @@
         <span>Taha Azeem</span>
       </a>
       <nav aria-label="Primary">
+        <a href="#about">About</a>
         <a href="#projects">Projects</a>
         <a href="#experience">Experience</a>
         <a href="#leadership">Leadership</a>
@@ -104,12 +109,47 @@
   <main id="top" class="container">
     <!-- HERO -->
     <section class="hero" aria-labelledby="intro-heading">
-      <h1 id="intro-heading" class="display"><span class="name-gradient">Taha Azeem</span></h1>
-      <p class="lead">United States • IEEE Eta Kappa Nu</p>
-      <div class="hero-cta">
-        <a class="btn primary" href="mailto:tahaazeemb@gmail.com">Email me</a>
-        <a class="btn ghost" href="https://www.linkedin.com/in/tahaazeem/" target="_blank" rel="noopener">LinkedIn</a>
-        <a class="btn ghost" href="https://github.com/tahaazeem786" target="_blank" rel="noopener">GitHub</a>
+      <div class="hero-copy">
+        <h1 id="intro-heading" class="display"><span class="name-gradient">Taha Azeem</span></h1>
+        <p class="lead">United States • IEEE Eta Kappa Nu</p>
+        <div class="hero-cta">
+          <a class="btn primary" href="mailto:tahaazeemb@gmail.com">Email me</a>
+          <a class="btn ghost" href="https://www.linkedin.com/in/tahaazeem/" target="_blank" rel="noopener">LinkedIn</a>
+          <a class="btn ghost" href="https://github.com/tahaazeem786" target="_blank" rel="noopener">GitHub</a>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <!-- Add your headshot to the repo as /headshot.jpg -->
+        <div class="photo-wrap"><img class="photo" src="headshot.jpg" alt="Headshot of Taha Azeem" /></div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" aria-labelledby="about-heading">
+      <h2 id="about-heading" class="section">About</h2>
+      <div class="under" aria-hidden="true"></div>
+      <div class="grid">
+        <div class="col-12 card hover-rise">
+          <p>Computer Engineering student with a builder’s bias: backends, serverless systems, and developer tools — plus the product sense to ship things real people use. I love taking ambiguous problems, breaking them into clear APIs and workflows, and delivering something polished end‑to‑end.</p>
+          <div class="tags"><span class="tag">Backends</span><span class="tag">AI Tooling</span><span class="tag">Mobile</span><span class="tag">Data</span><span class="tag">Product</span></div>
+        </div>
+        <div class="col-6 card hover-rise">
+          <h3>Highlights</h3>
+          <ul>
+            <li>62,000+ employees enabled to discover & use APIs (ELC agent integration).</li>
+            <li>Shipped mobile apps to Google Play for paying customers (SNR).</li>
+            <li>Covered 6 countries across 3 continents with a COVID tracking app.</li>
+            <li>80%+ unit test coverage on new React components.</li>
+          </ul>
+        </div>
+        <div class="col-6 card hover-rise">
+          <h3>What I’m into</h3>
+          <ul>
+            <li>Serverless with AWS (Lambda, API Gateway, S3, RDS).</li>
+            <li>Clean API design and typed backends.</li>
+            <li>Small, fast UIs that don’t fight you.</li>
+          </ul>
+        </div>
       </div>
     </section>
 
@@ -125,18 +165,43 @@
         </article>
         <article class="card hover-rise col-6">
           <h3><a href="https://github.com/tahaazeem786/Covid-Tracker" target="_blank" rel="noopener">COVID Case Tracking App</a></h3>
-          <p>Mobile app to track COVID case data across multiple countries and U.S. states with daily updates and charts.</p>
-          <div class="tags"><span class="tag">Dart</span><span class="tag">Flutter</span></div>
+          <p>Mobile app to track COVID case data with daily updates; supported users in 6 countries across 3 continents.</p>
+          <div class="tags"><span class="tag">Dart</span><span class="tag">Flutter</span><span class="tag">REST</span></div>
         </article>
         <article class="card hover-rise col-6">
-          <h3><a href="https://github.com/tahaazeem786/SNR-Management-App" target="_blank" rel="noopener">Customer Relations & Business Mgmt App</a></h3>
-          <p>Consulted with SNR Salon; built Laravel API and Flutter apps for bookings, tickets, and customer workflows; shipped to Google Play.</p>
+          <h3><a href="https://github.com/tahaazeem786/SNR-Management-App" target="_blank" rel="noopener">Customer Relations & Business Mgmt</a></h3>
+          <p>Consulted with SNR Salon; built Laravel API and Flutter apps for bookings, tickets, and customer workflows; shipped to Google Play for paying customers.</p>
           <div class="tags"><span class="tag">Laravel</span><span class="tag">Flutter</span><span class="tag">API</span></div>
         </article>
         <article class="card hover-rise col-6">
           <h3><a href="https://github.com/tahaazeem786/Reminders" target="_blank" rel="noopener">Reminders</a></h3>
           <p>Lightweight reminders app to explore notifications and state management.</p>
           <div class="tags"><span class="tag">Dart</span><span class="tag">Flutter</span></div>
+        </article>
+        <article class="card hover-rise col-6">
+          <h3>Cloud‑Native PhotoApp (AWS)</h3>
+          <p>Serverless photo management application using S3 (storage), Rekognition (auto‑tagging), IAM (secure access), boto3 automations, and RDS MySQL for metadata & retrieval.</p>
+          <div class="tags"><span class="tag">AWS</span><span class="tag">S3</span><span class="tag">Rekognition</span><span class="tag">RDS MySQL</span><span class="tag">boto3</span></div>
+        </article>
+        <article class="card hover-rise col-6">
+          <h3>OpenStreetMaps — C++ OSM Interpreter</h3>
+          <p>Built a C++ program for OpenStreetMap navigation around Northwestern; OOD architecture, CTA bus prediction API integration, and a threaded binary search tree for fast data ops.</p>
+          <div class="tags"><span class="tag">C++</span><span class="tag">Algorithms</span><span class="tag">CTA API</span></div>
+        </article>
+        <article class="card hover-rise col-6">
+          <h3>LaserJoy — Directionality‑based Toy (Northwestern Medicine)</h3>
+          <p>Led client communication and iterative design. Arduino‑based system with custom 3D‑printed joystick grips; conducted research & testing; co‑authored a 50‑page process/report.</p>
+          <div class="tags"><span class="tag">Arduino</span><span class="tag">3D Printing</span><span class="tag">User Research</span></div>
+        </article>
+        <article class="card hover-rise col-6">
+          <h3>nuPython — C‑based Python Interpreter</h3>
+          <p>Interpreter in C with scanner, executor, and memory module; tokenization, allocation & error handling; heavy use of pointers and Valgrind.</p>
+          <div class="tags"><span class="tag">C</span><span class="tag">Compilers</span><span class="tag">Valgrind</span></div>
+        </article>
+        <article class="card hover-rise col-6">
+          <h3>Cloud Project Management System (AWS)</h3>
+          <p>Architected serverless project management using Lambda, API Gateway, and RDS; dynamic task allocation, analytics, and search; API Gateway + Lambda for workflow automation.</p>
+          <div class="tags"><span class="tag">AWS Lambda</span><span class="tag">API Gateway</span><span class="tag">RDS</span><span class="tag">Serverless</span></div>
         </article>
       </div>
     </section>
@@ -211,9 +276,22 @@
     <section id="skills" aria-labelledby="skills-heading">
       <h2 id="skills-heading" class="section">Skills</h2>
       <div class="under" aria-hidden="true"></div>
-      <div class="card">
-        <div class="tags">
-          <span class="tag">Python</span><span class="tag">C</span><span class="tag">C++</span><span class="tag">Flutter</span><span class="tag">JavaScript</span><span class="tag">React</span><span class="tag">Node</span><span class="tag">OOP</span><span class="tag">SQL</span><span class="tag">NoSQL</span><span class="tag">AWS</span><span class="tag">Azure</span><span class="tag">Azure API Management</span><span class="tag">REST APIs</span><span class="tag">Microsoft Copilot Studio</span><span class="tag">Power BI</span><span class="tag">Jest</span><span class="tag">Jira</span><span class="tag">Confluence</span>
+      <div class="grid">
+        <div class="col-6 card">
+          <h3>Languages</h3>
+          <div class="tags"><span class="tag">Python</span><span class="tag">C</span><span class="tag">C++</span><span class="tag">JavaScript</span><span class="tag">Dart</span><span class="tag">SQL</span><span class="tag">NoSQL</span></div>
+        </div>
+        <div class="col-6 card">
+          <h3>Frameworks & Platforms</h3>
+          <div class="tags"><span class="tag">React</span><span class="tag">Flutter</span><span class="tag">Node</span><span class="tag">FastAPI</span><span class="tag">Laravel</span><span class="tag">Jest</span></div>
+        </div>
+        <div class="col-6 card">
+          <h3>Cloud & DevOps</h3>
+          <div class="tags"><span class="tag">AWS</span><span class="tag">Lambda</span><span class="tag">API Gateway</span><span class="tag">S3</span><span class="tag">RDS</span><span class="tag">Azure</span><span class="tag">Azure API Management</span><span class="tag">Docker</span><span class="tag">CI/CD</span><span class="tag">Jira</span><span class="tag">Confluence</span></div>
+        </div>
+        <div class="col-6 card">
+          <h3>Data & AI</h3>
+          <div class="tags"><span class="tag">Power BI</span><span class="tag">scikit‑learn</span><span class="tag">PySpark</span><span class="tag">MLflow</span><span class="tag">Visualization</span></div>
         </div>
       </div>
     </section>
