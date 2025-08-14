@@ -1,76 +1,85 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Taha Azeem — Portfolio</title>
-  <meta name="description" content="Taha Azeem — Computer Engineering portfolio: projects, experience, skills, and contact." />
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%239b59ff'/%3E%3Ctext x='50' y='60' font-size='50' text-anchor='middle' fill='white' font-family='Arial, Helvetica, sans-serif'%3ETA%3C/text%3E%3C/svg%3E" />
-  <style>
-    /* ===== Reset / Base ===== */
-    *,*::before,*::after{box-sizing:border-box}
-    html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
-    body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;color:var(--text);background:var(--bg)}
-    img{max-width:100%;display:block}
-    a{color:inherit;text-decoration:none}
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Taha Azeem — Portfolio</title>
+<meta name="description" content="Taha Azeem — Computer Engineering portfolio: projects, experience, leadership, skills & contact." />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%237F5AF0'/%3E%3Cstop offset='1' stop-color='%232CB67D'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect rx='22' width='100' height='100' fill='url(%23g)'/%3E%3Ctext x='50' y='62' text-anchor='middle' fill='white' font-size='54' font-family='Inter,Segoe UI,Arial' font-weight='800'%3ETA%3C/text%3E%3C/svg%3E" />
+<style>
+  /* ---------------- Base & Theme ---------------- */
+  :root{
+    --brand:#7F5AF0; --brand2:#2CB67D; --bg:#0b0c10; --text:#f7f8ff; --muted:#a7a9be; --panel:rgba(20,21,29,.7); --border:rgba(255,255,255,.08);
+    --ring:rgba(127,90,240,.35); --shadow:0 20px 40px rgba(0,0,0,.35);
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+  body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;background:var(--bg);color:var(--text);line-height:1.6;overflow-x:hidden}
+  img{max-width:100%;display:block}
+  a{color:inherit;text-decoration:none}
 
-    :root{--bg:#0a0b10;--panel:#0f111a;--card:#121320;--text:#eef0ff;--muted:#a5a8bd;--border:#202236;--brand:#6c7bff;--brand2:#9b59ff;--ring:rgba(108,123,255,.35);--shadow:0 20px 40px rgba(0,0,0,.35)}
-    @media (prefers-color-scheme: light){:root{--bg:#f7f8ff;--panel:#ffffff;--card:#ffffff;--text:#15161b;--muted:#5a5d72;--border:#e6e8f5;--brand:#4158ff;--brand2:#9b59ff;--ring:rgba(65,88,255,.25);--shadow:0 14px 28px rgba(0,0,0,.08)}}
+  /* ---------------- Background Orchestration ---------------- */
+  .backdrop{
+    position:fixed; inset:0; z-index:-2; pointer-events:none;
+    background:
+      radial-gradient(900px 500px at 80% -10%, rgba(127,90,240,.20), transparent 55%),
+      radial-gradient(700px 500px at -10% 20%, rgba(44,182,125,.20), transparent 55%),
+      radial-gradient(1200px 800px at 50% 120%, rgba(127,90,240,.12), transparent 60%),
+      linear-gradient(180deg, #0c0d13, #090a0f 60%);
+  }
+  .grid-overlay{position:fixed;inset:0;z-index:-1;opacity:.06;background-image:linear-gradient(transparent 31px, rgba(255,255,255,.5) 32px),linear-gradient(90deg, transparent 31px, rgba(255,255,255,.5) 32px);background-size:32px 32px;mask:radial-gradient(800px 800px at 50% 0%, #000 30%, transparent 70%)}
 
-    /* Background flair */
-    body::before,body::after{content:"";position:fixed;inset:auto;z-index:-2;filter:blur(90px);opacity:.6;pointer-events:none}
-    body::before{top:-12vh;right:-10vw;width:60vw;height:60vh;background:radial-gradient(60% 60% at 50% 50%,var(--brand),transparent 60%)}
-    body::after{bottom:-18vh;left:-14vw;width:70vw;height:70vh;background:radial-gradient(60% 60% at 50% 50%,var(--brand2),transparent 60%)}
+  /* ---------------- Layout ---------------- */
+  .container{max-width:1120px;margin:0 auto;padding:28px}
+  header.nav{position:sticky;top:0;z-index:40;border-bottom:1px solid var(--border);backdrop-filter:saturate(160%) blur(10px);background:color-mix(in oklab, var(--bg) 82%, transparent)}
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;gap:16px}
+  .brand{display:flex;align-items:center;gap:12px;font-weight:800}
+  .brand-logo{width:36px;height:36px;border-radius:12px;display:grid;place-items:center;color:#fff;background:linear-gradient(135deg,var(--brand),var(--brand2));box-shadow:var(--shadow)}
+  nav a{padding:10px 12px;border-radius:12px;color:var(--muted)}
+  nav a:hover{color:var(--text);background:color-mix(in oklab,var(--brand) 18%, transparent)}
+  .btn{display:inline-flex;align-items:center;gap:10px;font-weight:700;border-radius:14px;padding:12px 16px}
+  .btn.primary{background:linear-gradient(135deg,var(--brand),var(--brand2));color:#fff;border:0;box-shadow:var(--shadow)}
+  .btn.ghost{border:1px solid var(--border);background:color-mix(in oklab,var(--panel) 85%, transparent)}
 
-    /* Layout */
-    .container{max-width:1120px;margin:0 auto;padding:28px}
-    header.nav{position:sticky;top:0;backdrop-filter:saturate(160%) blur(10px);background:color-mix(in oklab,var(--bg) 82%,transparent);border-bottom:1px solid var(--border);z-index:40}
-    .nav-inner{display:flex;align-items:center;justify-content:space-between;gap:16px}
-    .brand{display:flex;align-items:center;gap:12px;font-weight:800}
-    .brand-logo{width:36px;height:36px;border-radius:12px;display:grid;place-items:center;color:#fff;background:linear-gradient(135deg,var(--brand),var(--brand2));box-shadow:var(--shadow)}
-    nav a{padding:10px 12px;border-radius:12px;color:var(--muted)}
-    nav a:hover{color:var(--text);background:color-mix(in oklab,var(--brand) 18%,transparent)}
+  /* ---------------- Hero ---------------- */
+  .hero{display:grid;grid-template-columns:1fr;gap:18px;align-items:center;padding:72px 0 56px}
+  .display{font-size:clamp(48px,10vw,110px);line-height:1.02;letter-spacing:-.02em;margin:0;text-wrap:balance}
+  .name-gradient{background:linear-gradient(135deg,var(--brand),var(--brand2));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .lead{font-size:clamp(16px,2.2vw,20px);color:var(--muted);margin:6px 0 0}
+  .hero-cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:14px}
 
-    /* Hero */
-    .hero{display:grid;grid-template-columns:1.2fr .8fr;gap:28px;align-items:center;padding:64px 0}
-    .hero h1{font-size:clamp(32px,6vw,56px);line-height:1.05;margin:0 0 10px}
-    .hero .lead{font-size:clamp(16px,2vw,20px);margin:0 0 18px;color:var(--muted)}
-    .hero-aside{position:relative}
-    .avatar{width:180px;height:180px;border-radius:28px;margin:0 auto;background:linear-gradient(135deg,var(--brand),var(--brand2));display:grid;place-items:center;color:#fff;font-size:64px;box-shadow:var(--shadow)}
-    .glow{position:absolute;inset:-20px;z-index:-1;border-radius:32px;filter:blur(40px);opacity:.55;background:conic-gradient(from 120deg at 50% 50%,var(--brand),var(--brand2),var(--brand));animation:spin 12s linear infinite}
-    @keyframes spin{to{transform:rotate(360deg)}}
+  /* ---------------- Sections ---------------- */
+  section{padding:32px 0}
+  h2.section{font-size:28px;margin:0 0 12px;display:inline-flex;align-items:center;gap:10px}
+  .under{height:3px;border-radius:999px;background:linear-gradient(90deg,var(--brand),var(--brand2));width:88px}
 
-    /* Cards */
-    .card{background:color-mix(in oklab,var(--panel) 88%,transparent);border:1px solid var(--border);border-radius:20px;padding:22px;box-shadow:var(--shadow)}
-    .hover-rise{transition:transform .25s ease, box-shadow .25s ease}
-    .hover-rise:hover{transform:translateY(-4px);box-shadow:0 30px 60px rgba(0,0,0,.35)}
+  /* ---------------- Cards & Grids ---------------- */
+  .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:16px}
+  .col-6{grid-column:span 6}
+  .col-4{grid-column:span 4}
+  .col-12{grid-column:span 12}
+  @media (max-width:900px){.col-6,.col-4{grid-column:span 12}}
+  .card{background:color-mix(in oklab, var(--panel) 88%, transparent);border:1px solid var(--border);border-radius:20px;padding:22px;box-shadow:var(--shadow)}
+  .hover-rise{transition:transform .25s ease, box-shadow .25s ease}
+  .hover-rise:hover{transform:translateY(-4px);box-shadow:0 30px 60px rgba(0,0,0,.35)}
 
-    /* Buttons */
-    .btn{display:inline-flex;align-items:center;gap:10px;font-weight:700;border-radius:14px;padding:12px 16px}
-    .primary{background:linear-gradient(135deg,var(--brand),var(--brand2));color:#fff;border:0;box-shadow:var(--shadow)}
-    .ghost{border:1px solid var(--border);background:color-mix(in oklab,var(--panel) 85%,transparent)}
+  /* ---------------- Tags ---------------- */
+  .tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+  .tag{display:inline-block;padding:6px 10px;border:1px solid var(--border);border-radius:999px;font-size:12px;color:var(--muted);background:rgba(255,255,255,.04)}
+  .pill{padding:4px 8px;border-radius:999px;font-size:12px;border:1px solid var(--border);margin-left:8px}
+  .inprog{background:rgba(127,90,240,.12);color:#d9d3ff;border-color:rgba(127,90,240,.35)}
 
-    /* Grid */
-    .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:16px}
-    .col-6{grid-column:span 6}
-    .col-4{grid-column:span 4}
-    .col-12{grid-column:span 12}
-    @media (max-width:900px){.hero{grid-template-columns:1fr}.col-6,.col-4{grid-column:span 12}}
+  /* ---------------- Footer ---------------- */
+  footer{border-top:1px solid var(--border);margin-top:28px;padding:22px;color:var(--muted);font-size:14px}
 
-    /* Tags */
-    .tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
-    .tag{display:inline-block;padding:6px 10px;border:1px solid var(--border);border-radius:999px;font-size:12px;color:var(--muted)}
-    .pill{padding:4px 8px;border-radius:999px;font-size:12px;border:1px solid var(--border);margin-left:8px}
-    .inprog{background:rgba(255,255,255,.06)}
-
-    /* Lists */
-    ul{margin:10px 0 0 18px}
-
-    /* Footer */
-    footer{border-top:1px solid var(--border);margin-top:28px;padding:22px;color:var(--muted);font-size:14px}
-  </style>
+  /* ---------------- Motion prefs ---------------- */
+  @media (prefers-reduced-motion: reduce){.hover-rise{transition:none}.hero-cta{transition:none}}
+</style>
 </head>
 <body>
+  <div class="backdrop"></div>
+  <div class="grid-overlay"></div>
+
   <!-- NAV -->
   <header class="nav">
     <div class="nav-inner container">
@@ -81,12 +90,13 @@
       <nav aria-label="Primary">
         <a href="#projects">Projects</a>
         <a href="#experience">Experience</a>
+        <a href="#leadership">Leadership</a>
         <a href="#skills">Skills</a>
         <a href="#contact">Contact</a>
       </nav>
       <div class="nav-right">
-        <a class="ghost btn" href="https://github.com/tahaazeem786" target="_blank" rel="noopener">GitHub</a>
-        <a class="primary btn" href="#contact">Get in touch</a>
+        <a class="btn ghost" href="https://github.com/tahaazeem786" target="_blank" rel="noopener">GitHub</a>
+        <a class="btn primary" href="#contact">Get in touch</a>
       </div>
     </div>
   </header>
@@ -94,25 +104,19 @@
   <main id="top" class="container">
     <!-- HERO -->
     <section class="hero" aria-labelledby="intro-heading">
-      <div>
-        <h1 id="intro-heading">Computer Engineer building practical AI tooling & solid backends.</h1>
-        <p class="lead">Based in the United States. IEEE Eta Kappa Nu.</p>
-        <div style="display:flex;gap:12px;flex-wrap:wrap">
-          <a class="primary btn" href="https://github.com/tahaazeem786" target="_blank" rel="noopener">GitHub</a>
-          <a class="ghost btn" href="https://www.linkedin.com/in/tahaazeem/" target="_blank" rel="noopener">LinkedIn</a>
-        </div>
+      <h1 id="intro-heading" class="display"><span class="name-gradient">Taha Azeem</span></h1>
+      <p class="lead">United States • IEEE Eta Kappa Nu</p>
+      <div class="hero-cta">
+        <a class="btn primary" href="mailto:tahaazeemb@gmail.com">Email me</a>
+        <a class="btn ghost" href="https://www.linkedin.com/in/tahaazeem/" target="_blank" rel="noopener">LinkedIn</a>
+        <a class="btn ghost" href="https://github.com/tahaazeem786" target="_blank" rel="noopener">GitHub</a>
       </div>
-      <aside class="hero-aside">
-        <div class="glow" aria-hidden="true"></div>
-        <div class="avatar hover-rise" aria-hidden="true">TA</div>
-        <p class="muted" style="text-align:center;margin-top:10px">Based in the United States</p>
-      </aside>
     </section>
 
     <!-- PROJECTS -->
     <section id="projects" aria-labelledby="projects-heading">
-      <h2 id="projects-heading">Projects</h2>
-      <p class="muted">Selected work with repo links.</p>
+      <h2 id="projects-heading" class="section">Projects</h2>
+      <div class="under" aria-hidden="true"></div>
       <div class="grid">
         <article class="card hover-rise col-6">
           <h3><a href="https://github.com/tahaazeem786/devghost-cli" target="_blank" rel="noopener">DevGhost — CLI Memory for Developers</a><span class="pill inprog">In Progress</span></h3>
@@ -130,11 +134,6 @@
           <div class="tags"><span class="tag">Laravel</span><span class="tag">Flutter</span><span class="tag">API</span></div>
         </article>
         <article class="card hover-rise col-6">
-          <h3>CRM Clock (private)</h3>
-          <p>Time‑tracking/CRM utility built for a company client. Repo and code private.</p>
-          <div class="tags"><span class="tag">Flutter</span><span class="tag">Product</span></div>
-        </article>
-        <article class="card hover-rise col-6">
           <h3><a href="https://github.com/tahaazeem786/Reminders" target="_blank" rel="noopener">Reminders</a></h3>
           <p>Lightweight reminders app to explore notifications and state management.</p>
           <div class="tags"><span class="tag">Dart</span><span class="tag">Flutter</span></div>
@@ -144,65 +143,74 @@
 
     <!-- EXPERIENCE -->
     <section id="experience" aria-labelledby="xp-heading">
-      <h2 id="xp-heading">Professional Experience</h2>
+      <h2 id="xp-heading" class="section">Professional Experience</h2>
+      <div class="under" aria-hidden="true"></div>
       <div class="grid">
         <div class="col-12 card hover-rise">
           <h3>The Estée Lauder Companies — Software Engineering Intern</h3>
-          <div class="muted">06/2025 – 08/2025 · New York City, NY</div>
+          <div class="muted">06/2025 – 08/2025 • New York City, NY</div>
           <ul>
             <li>Built and deployed an intelligent Copilot Studio agent for the DataHub Services Portal.</li>
             <li>Integrated into React frontend and Node backend, enabling 62,000+ employees to discover and interact with APIs.</li>
             <li>Developed and tested new frontend components with 80%+ unit test coverage.</li>
             <li>Collaborated with the data integration team to build, test, and optimize RESTful API endpoints.</li>
           </ul>
+          <div class="tags"><span class="tag">React</span><span class="tag">Node</span><span class="tag">Microsoft Copilot Studio</span><span class="tag">REST APIs</span><span class="tag">Azure API Management</span><span class="tag">Jest</span><span class="tag">CI/CD</span></div>
         </div>
         <div class="col-12 card hover-rise">
           <h3>Mntrme — Lead Engineer</h3>
-          <div class="muted">01/2025 – present · Chicago, IL</div>
+          <div class="muted">01/2025 – present • Chicago, IL</div>
           <ul>
             <li>Oversaw and actively contributed to development and deployment of iOS and Android apps (Flutter front‑end, Laravel backend).</li>
             <li>Managed a team of 7 developers; coordinated tasks and maintained sprint velocity.</li>
             <li>Maintained app infrastructure, ensuring reliability and production stability across platforms.</li>
           </ul>
+          <div class="tags"><span class="tag">Flutter</span><span class="tag">Laravel</span><span class="tag">Mobile</span><span class="tag">Leadership</span><span class="tag">Backend</span><span class="tag">Project Management</span></div>
         </div>
         <div class="col-12 card hover-rise">
           <h3>Cleveland Clinic Abu Dhabi — Data Science & Business Intelligence Intern</h3>
-          <div class="muted">06/2024 – 09/2024 · Abu Dhabi, UAE</div>
+          <div class="muted">06/2024 – 09/2024 • Abu Dhabi, UAE</div>
           <ul>
             <li>Engineered a Power BI dashboard enabling leadership to track success rates and identify 18 daily bottlenecks; improved refresh times by ~10%.</li>
             <li>Designed visualizations for ~20 stakeholders; optimized Power BI server operations.</li>
             <li>Developed an ML model (88% accuracy) to predict scheduled job outcomes with MLflow tracking.</li>
           </ul>
+          <div class="tags"><span class="tag">Power BI</span><span class="tag">SQL</span><span class="tag">Python</span><span class="tag">ML</span><span class="tag">Data Engineering</span><span class="tag">Visualization</span></div>
         </div>
         <div class="col-12 card hover-rise">
           <h3>MVP Applications & Game Design — Software Engineering Intern</h3>
-          <div class="muted">12/2021 – 03/2022 · Abu Dhabi, UAE</div>
+          <div class="muted">12/2021 – 03/2022 • Abu Dhabi, UAE</div>
           <ul>
             <li>Performed rigorous application testing and bug resolution to deliver high‑quality releases.</li>
             <li>Built cross‑platform mobile apps with Flutter and Laravel; collaborated with stakeholders to launch a CRM app adopted by ~40 daily users.</li>
           </ul>
+          <div class="tags"><span class="tag">Flutter</span><span class="tag">Laravel</span><span class="tag">QA</span><span class="tag">Debugging</span><span class="tag">Cross‑Platform</span></div>
         </div>
       </div>
     </section>
 
     <!-- TEACHING & LEADERSHIP -->
-    <section aria-labelledby="teach-heading">
-      <h2 id="teach-heading">Teaching & Leadership</h2>
+    <section id="leadership" aria-labelledby="teach-heading">
+      <h2 id="teach-heading" class="section">Teaching & Leadership</h2>
+      <div class="under" aria-hidden="true"></div>
       <div class="grid">
         <div class="col-12 card hover-rise">
           <h3>Course Staff — Northwestern CS (Intro)</h3>
           <p class="muted">Focused on functional programming, testing, and debugging for first‑year students.</p>
+          <div class="tags"><span class="tag">Functional Programming</span><span class="tag">Testing</span><span class="tag">Debugging</span><span class="tag">Teaching</span></div>
         </div>
         <div class="col-12 card hover-rise">
           <h3>Outreach Director — MMHI</h3>
           <p class="muted">Leading outreach initiatives and community engagement.</p>
+          <div class="tags"><span class="tag">Leadership</span><span class="tag">Community</span><span class="tag">Outreach</span><span class="tag">Public Speaking</span></div>
         </div>
       </div>
     </section>
 
     <!-- SKILLS -->
     <section id="skills" aria-labelledby="skills-heading">
-      <h2 id="skills-heading">Skills</h2>
+      <h2 id="skills-heading" class="section">Skills</h2>
+      <div class="under" aria-hidden="true"></div>
       <div class="card">
         <div class="tags">
           <span class="tag">Python</span><span class="tag">C</span><span class="tag">C++</span><span class="tag">Flutter</span><span class="tag">JavaScript</span><span class="tag">React</span><span class="tag">Node</span><span class="tag">OOP</span><span class="tag">SQL</span><span class="tag">NoSQL</span><span class="tag">AWS</span><span class="tag">Azure</span><span class="tag">Azure API Management</span><span class="tag">REST APIs</span><span class="tag">Microsoft Copilot Studio</span><span class="tag">Power BI</span><span class="tag">Jest</span><span class="tag">Jira</span><span class="tag">Confluence</span>
@@ -212,8 +220,8 @@
 
     <!-- CONTACT -->
     <section id="contact" aria-labelledby="contact-heading">
-      <h2 id="contact-heading">Contact</h2>
-      <p class="muted">Want to collaborate or chat?</p>
+      <h2 id="contact-heading" class="section">Contact</h2>
+      <div class="under" aria-hidden="true"></div>
       <div class="card">
         <p>Email: <a href="mailto:tahaazeemb@gmail.com">tahaazeemb@gmail.com</a></p>
       </div>
@@ -222,12 +230,11 @@
     <footer>
       <div class="container" style="display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap">
         <span>© <span id="year"></span> Taha Azeem</span>
-        <span class="muted">Built with plain HTML/CSS/JS · GitHub Pages ready</span>
+        <span class="muted">Built with HTML/CSS — GitHub Pages ready</span>
       </div>
     </footer>
   </main>
-  <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
+
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
 </body>
 </html>
