@@ -78,6 +78,12 @@
 
   /* ---------------- Motion prefs ---------------- */
   @media (prefers-reduced-motion: reduce){.hover-rise{transition:none}.hero-cta{transition:none}}
+  /* --- Modal styling --- */
+  .modal.hidden{display:none}
+  .modal{position:fixed;inset:0;z-index:60}
+  .modal-backdrop{position:absolute;inset:0;background:rgba(0,0,0,.5);backdrop-filter:blur(3px)}
+  .modal-panel{position:relative;max-width:720px;margin:10vh auto;background:color-mix(in oklab, var(--panel) 92%, transparent);border:1px solid var(--border);border-radius:18px;box-shadow:var(--shadow);padding:24px}
+  .modal-close{position:absolute;top:10px;right:12px;border:1px solid var(--border);background:transparent;color:var(--text);border-radius:10px;padding:6px 10px;font-size:18px;cursor:pointer}
 </style>
 </head>
 <body>
@@ -158,48 +164,48 @@
       <h2 id="projects-heading" class="section">Main Projects</h2>
       <div class="under" aria-hidden="true"></div>
       <div class="grid">
-        <article class="card hover-rise col-6">
+        <article class="card hover-rise col-6 project-card" tabindex="0" role="button">
           <h3><a href="https://github.com/tahaazeem786/devghost-cli" target="_blank" rel="noopener">DevGhost — CLI Memory for Developers</a><span class="pill inprog">In Progress</span></h3>
           <p>Logs every terminal command with context, output, and timestamps into a searchable memory layer. Modern web UI and AI‑assisted explanations.</p>
           <div class="tags"><span class="tag">Python</span><span class="tag">FastAPI</span><span class="tag">SQLite</span><span class="tag">React</span></div>
         </article>
         
-        <article class="card hover-rise col-6">
+        <article class="card hover-rise col-6 project-card" tabindex="0" role="button">
           <h3><a href="https://github.com/tahaazeem786/Covid-Tracker" target="_blank" rel="noopener">COVID Case Tracking App</a></h3>
           <p>Mobile app to track COVID case data with daily updates; supported users in 6 countries across 3 continents.</p>
           <div class="tags"><span class="tag">Dart</span><span class="tag">Flutter</span><span class="tag">REST</span></div>
         </article>
-        <article class="card hover-rise col-6">
+        <article class="card hover-rise col-6 project-card" tabindex="0" role="button">
           <h3><a href="https://github.com/tahaazeem786/SNR-Management-App" target="_blank" rel="noopener">Customer Relations & Business Mgmt</a></h3>
           <p>Consulted with SNR Salon; built Laravel API and Flutter apps for bookings, tickets, and customer workflows; shipped to Google Play for paying customers.</p>
           <div class="tags"><span class="tag">Laravel</span><span class="tag">Flutter</span><span class="tag">API</span></div>
         </article>
-        <article class="card hover-rise col-6">
+        <article class="card hover-rise col-6 project-card" tabindex="0" role="button">
           <h3><a href="https://github.com/tahaazeem786/Reminders" target="_blank" rel="noopener">Reminders</a></h3>
           <p>Lightweight reminders app to explore notifications and state management.</p>
           <div class="tags"><span class="tag">Dart</span><span class="tag">Flutter</span></div>
         </article>
-        <article class="card hover-rise col-6">
+        <article class="card hover-rise col-6 project-card" tabindex="0" role="button">
           <h3>Cloud‑Native PhotoApp (AWS)</h3>
           <p>Serverless photo management application using S3 (storage), Rekognition (auto‑tagging), IAM (secure access), boto3 automations, and RDS MySQL for metadata & retrieval.</p>
           <div class="tags"><span class="tag">AWS</span><span class="tag">S3</span><span class="tag">Rekognition</span><span class="tag">RDS MySQL</span><span class="tag">boto3</span></div>
         </article>
-        <article class="card hover-rise col-6">
+        <article class="card hover-rise col-6 project-card" tabindex="0" role="button">
           <h3>OpenStreetMaps — C++ OSM Interpreter</h3>
           <p>Built a C++ program for OpenStreetMap navigation around Northwestern; OOD architecture, CTA bus prediction API integration, and a threaded binary search tree for fast data ops.</p>
           <div class="tags"><span class="tag">C++</span><span class="tag">Algorithms</span><span class="tag">CTA API</span></div>
         </article>
-        <article class="card hover-rise col-6">
+        <article class="card hover-rise col-6 project-card" tabindex="0" role="button">
           <h3>LaserJoy — Directionality‑based Toy (Northwestern Medicine)</h3>
           <p>Led client communication and iterative design. Arduino‑based system with custom 3D‑printed joystick grips; conducted research & testing; co‑authored a 50‑page process/report.</p>
           <div class="tags"><span class="tag">Arduino</span><span class="tag">3D Printing</span><span class="tag">User Research</span></div>
         </article>
-        <article class="card hover-rise col-6">
+        <article class="card hover-rise col-6 project-card" tabindex="0" role="button">
           <h3>nuPython — C‑based Python Interpreter</h3>
           <p>Interpreter in C with scanner, executor, and memory module; tokenization, allocation & error handling; heavy use of pointers and Valgrind.</p>
           <div class="tags"><span class="tag">C</span><span class="tag">Compilers</span><span class="tag">Valgrind</span></div>
         </article>
-        <article class="card hover-rise col-6">
+        <article class="card hover-rise col-6 project-card" tabindex="0" role="button">
           <h3>Cloud Project Management System (AWS)</h3>
           <p>Architected serverless project management using Lambda, API Gateway, and RDS; dynamic task allocation, analytics, and search; API Gateway + Lambda for workflow automation.</p>
           <div class="tags"><span class="tag">AWS Lambda</span><span class="tag">API Gateway</span><span class="tag">RDS</span><span class="tag">Serverless</span></div>
@@ -212,7 +218,7 @@
       <h2 id="side-heading" class="section">Side Projects</h2>
       <div class="under" aria-hidden="true"></div>
       <div class="grid">
-        <article class="card hover-rise col-6">
+        <article class="card hover-rise col-6 project-card" tabindex="0" role="button">
           <h3>CharityMatch — Swipe to Support <span class="pill inprog">Exploration</span></h3>
           <p>Prototyped a React + TypeScript web app with a Node backend that recommends nonprofits via a Tinder‑style swipe interface. Built core matching logic, donation queue, and charity search integration before pausing development. Repo private.</p>
           <div class="tags"><span class="tag">React</span><span class="tag">TypeScript</span><span class="tag">Node</span></div>
@@ -325,8 +331,69 @@
         <span class="muted">Built with HTML/CSS — GitHub Pages ready</span>
       </div>
     </footer>
-  </main>
+    <!-- Quick View Modal -->
+  <div id="quickview" class="modal hidden" aria-hidden="true" role="dialog" aria-labelledby="qv-title" aria-modal="true">
+    <div class="modal-backdrop" data-close></div>
+    <div class="modal-panel" role="document">
+      <button class="modal-close" aria-label="Close" data-close>×</button>
+      <h3 id="qv-title"></h3>
+      <p id="qv-desc" class="muted"></p>
+      <div id="qv-tags" class="tags" style="margin-top:12px"></div>
+      <div id="qv-actions" style="margin-top:16px;display:flex;gap:10px;flex-wrap:wrap"></div>
+    </div>
+  </div>
 
-  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // --- Quick View logic ---
+    const modal = document.getElementById('quickview');
+    const qvTitle = document.getElementById('qv-title');
+    const qvDesc = document.getElementById('qv-desc');
+    const qvTags = document.getElementById('qv-tags');
+    const qvActions = document.getElementById('qv-actions');
+
+    function openModal() {
+      modal.classList.remove('hidden');
+      modal.setAttribute('aria-hidden','false');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeModal() {
+      modal.classList.add('hidden');
+      modal.setAttribute('aria-hidden','true');
+      document.body.style.overflow = '';
+    }
+
+    modal.addEventListener('click', (e)=>{ if(e.target.hasAttribute('data-close')) closeModal(); });
+    document.addEventListener('keydown', (e)=>{ if(e.key==='Escape' && !modal.classList.contains('hidden')) closeModal(); });
+
+    function extractInfo(card){
+      const titleEl = card.querySelector('h3');
+      const linkEl = titleEl?.querySelector('a');
+      const title = titleEl ? (linkEl ? linkEl.textContent.trim() : titleEl.textContent.trim()) : '';
+      // pick first paragraph inside card as description
+      const descEl = card.querySelector('p');
+      const desc = descEl ? descEl.textContent.trim() : '';
+      const tagEls = card.querySelectorAll('.tags .tag');
+      const tags = Array.from(tagEls).map(el=>el.textContent.trim());
+      const actions = [];
+      if(linkEl && linkEl.href) actions.push({label:'View Repo', href: linkEl.href});
+      return {title, desc, tags, actions};
+    }
+
+    function populate(info){
+      qvTitle.textContent = info.title;
+      qvDesc.textContent = info.desc;
+      qvTags.innerHTML = info.tags.map(t=>`<span class="tag">${t}</span>`).join('');
+      qvActions.innerHTML = info.actions.map(a=>`<a class="btn primary" target="_blank" rel="noopener" href="${a.href}">${a.label}</a>`).join('');
+    }
+
+    document.querySelectorAll('.project-card').forEach(card=>{
+      function handle(){ populate(extractInfo(card)); openModal(); }
+      card.addEventListener('click', handle);
+      card.addEventListener('keydown', (e)=>{ if(e.key==='Enter' || e.key===' ') { e.preventDefault(); handle(); }});
+      card.style.cursor = 'pointer';
+    });
+  </script>
 </body>
 </html>
