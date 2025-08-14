@@ -106,7 +106,6 @@
         <a href="#contact">Contact</a>
       </nav>
       <div class="nav-right">
-        <a class="btn ghost" href="https://github.com/tahaazeem786" target="_blank" rel="noopener">GitHub</a>
         <a class="btn primary" href="#contact">Get in touch</a>
       </div>
     </div>
@@ -121,8 +120,7 @@
         <div class="hero-cta">
           <a class="btn primary" href="mailto:tahaazeemb@gmail.com">Email me</a>
           <a class="btn ghost" href="https://www.linkedin.com/in/tahaazeem/" target="_blank" rel="noopener">LinkedIn</a>
-          <a class="btn ghost" href="https://github.com/tahaazeem786" target="_blank" rel="noopener">GitHub</a>
-        </div>
+          </div>
       </div>
       <div class="hero-visual">
         <!-- Add your headshot to the repo as /headshot.jpg -->
@@ -164,24 +162,25 @@
       <h2 id="projects-heading" class="section">Main Projects</h2>
       <div class="under" aria-hidden="true"></div>
       <div class="grid">
+        $1
         <article class="card hover-rise col-6 project-card" tabindex="0" role="button">
-          <h3><a href="https://github.com/tahaazeem786/devghost-cli" target="_blank" rel="noopener">DevGhost — CLI Memory for Developers</a><span class="pill inprog">In Progress</span></h3>
-          <p>Logs every terminal command with context, output, and timestamps into a searchable memory layer. Modern web UI and AI‑assisted explanations.</p>
-          <div class="tags"><span class="tag">Python</span><span class="tag">FastAPI</span><span class="tag">SQLite</span><span class="tag">React</span></div>
+          <h3>Mntrme — iOS & Android Apps <span class="pill inprog">Ongoing</span></h3>
+          <p>Leading development of Mntrme’s production mobile apps since Jan 2025. Flutter client + Laravel backend; infrastructure, releases, and reliability. Private app.</p>
+          <div class="tags"><span class="tag">Flutter</span><span class="tag">Laravel</span><span class="tag">iOS</span><span class="tag">Android</span><span class="tag">DevOps</span></div>
         </article>
         
         <article class="card hover-rise col-6 project-card" tabindex="0" role="button">
-          <h3><a href="https://github.com/tahaazeem786/Covid-Tracker" target="_blank" rel="noopener">COVID Case Tracking App</a></h3>
+          <h3>COVID Case Tracking App<\/h3>
           <p>Mobile app to track COVID case data with daily updates; supported users in 6 countries across 3 continents.</p>
           <div class="tags"><span class="tag">Dart</span><span class="tag">Flutter</span><span class="tag">REST</span></div>
         </article>
         <article class="card hover-rise col-6 project-card" tabindex="0" role="button">
-          <h3><a href="https://github.com/tahaazeem786/SNR-Management-App" target="_blank" rel="noopener">Customer Relations & Business Mgmt</a></h3>
+          <h3>Customer Relations & Business Mgmt<\/h3>
           <p>Consulted with SNR Salon; built Laravel API and Flutter apps for bookings, tickets, and customer workflows; shipped to Google Play for paying customers.</p>
           <div class="tags"><span class="tag">Laravel</span><span class="tag">Flutter</span><span class="tag">API</span></div>
         </article>
         <article class="card hover-rise col-6 project-card" tabindex="0" role="button">
-          <h3><a href="https://github.com/tahaazeem786/Reminders" target="_blank" rel="noopener">Reminders</a></h3>
+          <h3>Reminders<\/h3>
           <p>Lightweight reminders app to explore notifications and state management.</p>
           <div class="tags"><span class="tag">Dart</span><span class="tag">Flutter</span></div>
         </article>
@@ -369,15 +368,14 @@
 
     function extractInfo(card){
       const titleEl = card.querySelector('h3');
-      const linkEl = titleEl?.querySelector('a');
-      const title = titleEl ? (linkEl ? linkEl.textContent.trim() : titleEl.textContent.trim()) : '';
-      // pick first paragraph inside card as description
+      const titleRaw = titleEl ? titleEl.textContent : '';
+      const title = titleRaw.replace(/(In Progress|Ongoing|Exploration)/g,'').trim();
       const descEl = card.querySelector('p');
       const desc = descEl ? descEl.textContent.trim() : '';
-      const tagEls = card.querySelectorAll('.tags .tag');
-      const tags = Array.from(tagEls).map(el=>el.textContent.trim());
+      const tags = Array.from(card.querySelectorAll('.tags .tag')).map(el=>el.textContent.trim());
       const actions = [];
-      if(linkEl && linkEl.href) actions.push({label:'View Repo', href: linkEl.href});
+      const repo = card.dataset.repo;
+      if (repo) actions.push({label:'View Repo', href: repo});
       return {title, desc, tags, actions};
     }
 
