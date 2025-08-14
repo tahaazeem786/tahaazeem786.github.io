@@ -4,96 +4,74 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Taha Azeem — Portfolio</title>
-  <meta name="description" content="Taha Azeem — Software Engineer portfolio: projects, experience, and contact." />
-  <meta property="og:title" content="Taha Azeem — Portfolio" />
-  <meta property="og:description" content="Software Engineer portfolio: projects, experience, and contact." />
-  <meta property="og:type" content="website" />
-  <meta property="og:image" content="/og-image.png" />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <meta name="description" content="Taha Azeem — Computer Engineering portfolio: projects, experience, skills, and contact." />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%239b59ff'/%3E%3Ctext x='50' y='60' font-size='50' text-anchor='middle' fill='white' font-family='Arial, Helvetica, sans-serif'%3ETA%3C/text%3E%3C/svg%3E" />
   <style>
-    /* ===== Reset & Base ===== */
+    /* ===== Reset / Base ===== */
     *,*::before,*::after{box-sizing:border-box}
     html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
-    body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;line-height:1.6;color:var(--text);background:var(--bg)}
+    body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;color:var(--text);background:var(--bg)}
     img{max-width:100%;display:block}
     a{color:inherit;text-decoration:none}
 
-    /* ===== Theme ===== */
-    :root{
-      --bg:#0a0b10; --panel:#0f1017; --card:#121320; --text:#e9e9f1; --muted:#a7a9be; --border:#1f2030;
-      --brand:#6c7bff; --brand-2:#9b59ff; --ring:rgba(108,123,255,.35);
-      --shadow:0 20px 40px rgba(0,0,0,.35);
-    }
-    @media (prefers-color-scheme: light){
-      :root{--bg:#f7f8ff;--panel:#ffffff;--card:#ffffff;--text:#15161b;--muted:#5a5d72;--border:#e6e8f5;--brand:#4158ff;--brand-2:#9b59ff;--ring:rgba(65,88,255,.25);--shadow:0 14px 28px rgba(0,0,0,.08)}
-    }
+    :root{--bg:#0a0b10;--panel:#0f111a;--card:#121320;--text:#eef0ff;--muted:#a5a8bd;--border:#202236;--brand:#6c7bff;--brand2:#9b59ff;--ring:rgba(108,123,255,.35);--shadow:0 20px 40px rgba(0,0,0,.35)}
+    @media (prefers-color-scheme: light){:root{--bg:#f7f8ff;--panel:#ffffff;--card:#ffffff;--text:#15161b;--muted:#5a5d72;--border:#e6e8f5;--brand:#4158ff;--brand2:#9b59ff;--ring:rgba(65,88,255,.25);--shadow:0 14px 28px rgba(0,0,0,.08)}}
 
-    /* ===== Background Flair (gradient mesh + orbs) ===== */
-    body::before, body::after{content:"";position:fixed;inset:auto;z-index:-2;filter:blur(90px);opacity:.65;pointer-events:none}
-    body::before{top:-10vh;right:-10vw;width:60vw;height:60vh;background:radial-gradient(60% 60% at 50% 50%,var(--brand),transparent 60%)}
-    body::after{bottom:-20vh;left:-15vw;width:70vw;height:70vh;background:radial-gradient(60% 60% at 50% 50%,var(--brand-2),transparent 60%)}
+    /* Background flair */
+    body::before,body::after{content:"";position:fixed;inset:auto;z-index:-2;filter:blur(90px);opacity:.6;pointer-events:none}
+    body::before{top:-12vh;right:-10vw;width:60vw;height:60vh;background:radial-gradient(60% 60% at 50% 50%,var(--brand),transparent 60%)}
+    body::after{bottom:-18vh;left:-14vw;width:70vw;height:70vh;background:radial-gradient(60% 60% at 50% 50%,var(--brand2),transparent 60%)}
 
-    /* ===== Layout ===== */
-    .container{max-width:1120px;margin:0 auto;padding:24px}
-    header.nav{position:sticky;top:0;backdrop-filter:saturate(160%) blur(10px);background:color-mix(in oklab,var(--bg) 80%,transparent);border-bottom:1px solid var(--border);z-index:30}
+    /* Layout */
+    .container{max-width:1120px;margin:0 auto;padding:28px}
+    header.nav{position:sticky;top:0;backdrop-filter:saturate(160%) blur(10px);background:color-mix(in oklab,var(--bg) 82%,transparent);border-bottom:1px solid var(--border);z-index:40}
     .nav-inner{display:flex;align-items:center;justify-content:space-between;gap:16px}
-    .brand{display:flex;align-items:center;gap:12px;font-weight:800;letter-spacing:.2px}
-    .brand-logo{width:34px;height:34px;border-radius:12px;display:grid;place-items:center;color:#fff;font-size:14px;background:linear-gradient(135deg,var(--brand),var(--brand-2));box-shadow:var(--shadow)}
+    .brand{display:flex;align-items:center;gap:12px;font-weight:800}
+    .brand-logo{width:36px;height:36px;border-radius:12px;display:grid;place-items:center;color:#fff;background:linear-gradient(135deg,var(--brand),var(--brand2));box-shadow:var(--shadow)}
     nav a{padding:10px 12px;border-radius:12px;color:var(--muted)}
     nav a:hover{color:var(--text);background:color-mix(in oklab,var(--brand) 18%,transparent)}
 
-    /* Buttons */
-    .btn{display:inline-flex;align-items:center;gap:10px;font-weight:700;border-radius:14px;padding:12px 16px}
-    .primary{background:linear-gradient(135deg,var(--brand),var(--brand-2));color:#fff;box-shadow:var(--shadow);border:0}
-    .ghost{border:1px solid var(--border);background:color-mix(in oklab,var(--panel) 85%,transparent)}
-
-    /* Cards & Utilities */
-    .card{background:color-mix(in oklab,var(--panel) 85%,transparent);border:1px solid var(--border);border-radius:20px;padding:22px;box-shadow:var(--shadow)}
-    .hover-rise{transition:transform .25s ease, box-shadow .25s ease}
-    .hover-rise:hover{transform:translateY(-4px);box-shadow:0 30px 60px rgba(0,0,0,.35)}
-    .muted{color:var(--muted)}
-
     /* Hero */
     .hero{display:grid;grid-template-columns:1.2fr .8fr;gap:28px;align-items:center;padding:64px 0}
-    .hero h1{font-size:clamp(32px,6vw,56px);line-height:1.08;margin:0 0 10px}
+    .hero h1{font-size:clamp(32px,6vw,56px);line-height:1.05;margin:0 0 10px}
     .hero .lead{font-size:clamp(16px,2vw,20px);margin:0 0 18px;color:var(--muted)}
     .hero-aside{position:relative}
-    .avatar{width:180px;height:180px;border-radius:28px;margin:0 auto;background:linear-gradient(135deg,var(--brand),var(--brand-2));display:grid;place-items:center;color:#fff;font-size:64px;box-shadow:var(--shadow)}
-    .glow{position:absolute;inset:-20px;z-index:-1;border-radius:32px;filter:blur(40px);opacity:.55;background:conic-gradient(from 120deg at 50% 50%,var(--brand),var(--brand-2),var(--brand));animation:spin 12s linear infinite}
+    .avatar{width:180px;height:180px;border-radius:28px;margin:0 auto;background:linear-gradient(135deg,var(--brand),var(--brand2));display:grid;place-items:center;color:#fff;font-size:64px;box-shadow:var(--shadow)}
+    .glow{position:absolute;inset:-20px;z-index:-1;border-radius:32px;filter:blur(40px);opacity:.55;background:conic-gradient(from 120deg at 50% 50%,var(--brand),var(--brand2),var(--brand));animation:spin 12s linear infinite}
     @keyframes spin{to{transform:rotate(360deg)}}
 
-    /* Sections */
-    section{padding:32px 0}
-    h2{font-size:28px;margin:0 0 8px}
+    /* Cards */
+    .card{background:color-mix(in oklab,var(--panel) 88%,transparent);border:1px solid var(--border);border-radius:20px;padding:22px;box-shadow:var(--shadow)}
+    .hover-rise{transition:transform .25s ease, box-shadow .25s ease}
+    .hover-rise:hover{transform:translateY(-4px);box-shadow:0 30px 60px rgba(0,0,0,.35)}
+
+    /* Buttons */
+    .btn{display:inline-flex;align-items:center;gap:10px;font-weight:700;border-radius:14px;padding:12px 16px}
+    .primary{background:linear-gradient(135deg,var(--brand),var(--brand2));color:#fff;border:0;box-shadow:var(--shadow)}
+    .ghost{border:1px solid var(--border);background:color-mix(in oklab,var(--panel) 85%,transparent)}
 
     /* Grid */
     .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:16px}
     .col-6{grid-column:span 6}
+    .col-4{grid-column:span 4}
     .col-12{grid-column:span 12}
-    @media (max-width:900px){.hero{grid-template-columns:1fr}.col-6{grid-column:span 12}}
+    @media (max-width:900px){.hero{grid-template-columns:1fr}.col-6,.col-4{grid-column:span 12}}
 
-    /* Project cards */
-    .project h3{margin:0 0 6px;font-size:20px}
-    .project .tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
+    /* Tags */
+    .tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
     .tag{display:inline-block;padding:6px 10px;border:1px solid var(--border);border-radius:999px;font-size:12px;color:var(--muted)}
-    .project .meta{font-size:13px;color:var(--muted)}
+    .pill{padding:4px 8px;border-radius:999px;font-size:12px;border:1px solid var(--border);margin-left:8px}
+    .inprog{background:rgba(255,255,255,.06)}
 
-    /* Experience */
-    .xp{display:grid;gap:14px}
-    .xp-item{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:18px}
-    .xp-item h3{margin:0 0 4px;font-size:18px}
-    .xp-item .meta{font-size:14px;color:var(--muted)}
-    .xp-item ul{margin:10px 0 0 18px}
+    /* Lists */
+    ul{margin:10px 0 0 18px}
 
-    /* Contact */
-    form input, form textarea{width:100%;padding:12px 14px;border-radius:12px;border:1px solid var(--border);background:var(--card);color:var(--text)}
-
+    /* Footer */
     footer{border-top:1px solid var(--border);margin-top:28px;padding:22px;color:var(--muted);font-size:14px}
   </style>
 </head>
 <body>
+  <!-- NAV -->
   <header class="nav">
     <div class="nav-inner container">
       <a class="brand" href="#top" aria-label="Home">
@@ -103,110 +81,151 @@
       <nav aria-label="Primary">
         <a href="#projects">Projects</a>
         <a href="#experience">Experience</a>
-        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
         <a href="#contact">Contact</a>
       </nav>
       <div class="nav-right">
-        <a class="ghost btn" href="/resume.pdf" target="_blank" rel="noopener">Resume</a>
+        <a class="ghost btn" href="https://github.com/tahaazeem786" target="_blank" rel="noopener">GitHub</a>
         <a class="primary btn" href="#contact">Get in touch</a>
       </div>
     </div>
   </header>
-  <main>
+
+  <main id="top" class="container">
+    <!-- HERO -->
     <section class="hero" aria-labelledby="intro-heading">
       <div>
-        <h1 id="intro-heading">Hi, I'm <span style="background: linear-gradient(135deg,var(--brand),var(--brand-2)); -webkit-background-clip: text; background-clip: text; color: transparent;">Taha Azeem</span>.</h1>
-        <p class="lead">Northwestern CS • backend systems, APIs, and AI-powered developer tools. I like removing friction for engineers and shipping value fast.</p>
-        <div class="cta" style="display:flex;gap:12px;flex-wrap:wrap">
-          <a class="primary btn" href="https://github.com/tahaazeem" target="_blank" rel="noopener">GitHub</a>
+        <h1 id="intro-heading">Computer Engineer building practical AI tooling & solid backends.</h1>
+        <p class="lead">Based in the United States. IEEE Eta Kappa Nu.</p>
+        <div style="display:flex;gap:12px;flex-wrap:wrap">
+          <a class="primary btn" href="https://github.com/tahaazeem786" target="_blank" rel="noopener">GitHub</a>
           <a class="ghost btn" href="https://www.linkedin.com/in/tahaazeem/" target="_blank" rel="noopener">LinkedIn</a>
         </div>
       </div>
       <aside class="hero-aside">
         <div class="glow" aria-hidden="true"></div>
         <div class="avatar hover-rise" aria-hidden="true">TA</div>
-        <p class="muted" style="text-align:center;margin-top:10px">Based in Chicago • Open to SWE Intern/New Grad</p>
+        <p class="muted" style="text-align:center;margin-top:10px">Based in the United States</p>
       </aside>
     </section>
+
+    <!-- PROJECTS -->
     <section id="projects" aria-labelledby="projects-heading">
-      <h2 id="projects-heading">Featured Projects</h2>
-      <p class="muted">Things I’ve actually shipped.</p>
+      <h2 id="projects-heading">Projects</h2>
+      <p class="muted">Selected work with repo links.</p>
       <div class="grid">
-        <article class="project card hover-rise col-6">
-          <h3>DevGhost — CLI Memory for Developers</h3>
-          <p>Logs every terminal command with context, output, and timestamps into a searchable memory layer. Modern web UI and AI-assisted explanations of commands.</p>
+        <article class="card hover-rise col-6">
+          <h3><a href="https://github.com/tahaazeem786/devghost-cli" target="_blank" rel="noopener">DevGhost — CLI Memory for Developers</a><span class="pill inprog">In Progress</span></h3>
+          <p>Logs every terminal command with context, output, and timestamps into a searchable memory layer. Modern web UI and AI‑assisted explanations.</p>
           <div class="tags"><span class="tag">Python</span><span class="tag">FastAPI</span><span class="tag">SQLite</span><span class="tag">React</span></div>
-          <p class="meta">Personal project • 2025</p>
         </article>
-        <article class="project card hover-rise col-6">
-          <h3>DataHub AI Assistant</h3>
-          <p>Agentic assistant that streamlines data integration workflows by automating repetitive steps and generating API scaffolds with strong unit-test coverage.</p>
-          <div class="tags"><span class="tag">Node.js</span><span class="tag">TypeScript</span><span class="tag">Copilot Studio</span><span class="tag">Jest</span></div>
-          <p class="meta">Estée Lauder • 2025</p>
+        <article class="card hover-rise col-6">
+          <h3><a href="https://github.com/tahaazeem786/Covid-Tracker" target="_blank" rel="noopener">COVID Case Tracking App</a></h3>
+          <p>Mobile app to track COVID case data across multiple countries and U.S. states with daily updates and charts.</p>
+          <div class="tags"><span class="tag">Dart</span><span class="tag">Flutter</span></div>
+        </article>
+        <article class="card hover-rise col-6">
+          <h3><a href="https://github.com/tahaazeem786/SNR-Management-App" target="_blank" rel="noopener">Customer Relations & Business Mgmt App</a></h3>
+          <p>Consulted with SNR Salon; built Laravel API and Flutter apps for bookings, tickets, and customer workflows; shipped to Google Play.</p>
+          <div class="tags"><span class="tag">Laravel</span><span class="tag">Flutter</span><span class="tag">API</span></div>
+        </article>
+        <article class="card hover-rise col-6">
+          <h3>CRM Clock (private)</h3>
+          <p>Time‑tracking/CRM utility built for a company client. Repo and code private.</p>
+          <div class="tags"><span class="tag">Flutter</span><span class="tag">Product</span></div>
+        </article>
+        <article class="card hover-rise col-6">
+          <h3><a href="https://github.com/tahaazeem786/Reminders" target="_blank" rel="noopener">Reminders</a></h3>
+          <p>Lightweight reminders app to explore notifications and state management.</p>
+          <div class="tags"><span class="tag">Dart</span><span class="tag">Flutter</span></div>
         </article>
       </div>
     </section>
+
+    <!-- EXPERIENCE -->
     <section id="experience" aria-labelledby="xp-heading">
-      <h2 id="xp-heading">Experience</h2>
-      <div class="xp">
-        <div class="xp-item hover-rise">
-          <h3>Software Engineer Intern — The Estée Lauder Companies</h3>
-          <div class="meta">Summer 2025 · New York, NY</div>
-          <ul>
-            <li>Built backend services and data integrations; automated workflows for new product launches.</li>
-            <li>Integrated an AI assistant into a React/Node stack; maintained 80%+ unit test coverage.</li>
-            <li>Shipped a developer portal enabling non‑engineers to explore APIs securely.</li>
-          </ul>
-        </div>
-        <div class="xp-item hover-rise">
-          <h3>Teaching Assistant — Northwestern CS</h3>
-          <div class="meta">2024–2025</div>
-          <ul>
-            <li>Led labs and office hours; mentored students in data structures, DP, and debugging.</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-    <section id="about" aria-labelledby="about-heading">
-      <h2 id="about-heading">About</h2>
+      <h2 id="xp-heading">Professional Experience</h2>
       <div class="grid">
         <div class="col-12 card hover-rise">
-          <p>Second‑year CS student at Northwestern. I enjoy building developer tools, backend systems, and clean UIs. Lately I’ve been making CLI workflows smarter with AI and improving data platform ergonomics.</p>
-          <p class="muted">Outside of code: plane spotting, biking up Sheridan Road, and curating a small fragrance collection.</p>
+          <h3>The Estée Lauder Companies — Software Engineering Intern</h3>
+          <div class="muted">06/2025 – 08/2025 · New York City, NY</div>
+          <ul>
+            <li>Built and deployed an intelligent Copilot Studio agent for the DataHub Services Portal.</li>
+            <li>Integrated into React frontend and Node backend, enabling 62,000+ employees to discover and interact with APIs.</li>
+            <li>Developed and tested new frontend components with 80%+ unit test coverage.</li>
+            <li>Collaborated with the data integration team to build, test, and optimize RESTful API endpoints.</li>
+          </ul>
+        </div>
+        <div class="col-12 card hover-rise">
+          <h3>Mntrme — Lead Engineer</h3>
+          <div class="muted">01/2025 – present · Chicago, IL</div>
+          <ul>
+            <li>Oversaw and actively contributed to development and deployment of iOS and Android apps (Flutter front‑end, Laravel backend).</li>
+            <li>Managed a team of 7 developers; coordinated tasks and maintained sprint velocity.</li>
+            <li>Maintained app infrastructure, ensuring reliability and production stability across platforms.</li>
+          </ul>
+        </div>
+        <div class="col-12 card hover-rise">
+          <h3>Cleveland Clinic Abu Dhabi — Data Science & Business Intelligence Intern</h3>
+          <div class="muted">06/2024 – 09/2024 · Abu Dhabi, UAE</div>
+          <ul>
+            <li>Engineered a Power BI dashboard enabling leadership to track success rates and identify 18 daily bottlenecks; improved refresh times by ~10%.</li>
+            <li>Designed visualizations for ~20 stakeholders; optimized Power BI server operations.</li>
+            <li>Developed an ML model (88% accuracy) to predict scheduled job outcomes with MLflow tracking.</li>
+          </ul>
+        </div>
+        <div class="col-12 card hover-rise">
+          <h3>MVP Applications & Game Design — Software Engineering Intern</h3>
+          <div class="muted">12/2021 – 03/2022 · Abu Dhabi, UAE</div>
+          <ul>
+            <li>Performed rigorous application testing and bug resolution to deliver high‑quality releases.</li>
+            <li>Built cross‑platform mobile apps with Flutter and Laravel; collaborated with stakeholders to launch a CRM app adopted by ~40 daily users.</li>
+          </ul>
         </div>
       </div>
     </section>
+
+    <!-- TEACHING & LEADERSHIP -->
+    <section aria-labelledby="teach-heading">
+      <h2 id="teach-heading">Teaching & Leadership</h2>
+      <div class="grid">
+        <div class="col-12 card hover-rise">
+          <h3>Course Staff — Northwestern CS (Intro)</h3>
+          <p class="muted">Focused on functional programming, testing, and debugging for first‑year students.</p>
+        </div>
+        <div class="col-12 card hover-rise">
+          <h3>Outreach Director — MMHI</h3>
+          <p class="muted">Leading outreach initiatives and community engagement.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills" aria-labelledby="skills-heading">
+      <h2 id="skills-heading">Skills</h2>
+      <div class="card">
+        <div class="tags">
+          <span class="tag">Python</span><span class="tag">C</span><span class="tag">C++</span><span class="tag">Flutter</span><span class="tag">JavaScript</span><span class="tag">React</span><span class="tag">Node</span><span class="tag">OOP</span><span class="tag">SQL</span><span class="tag">NoSQL</span><span class="tag">AWS</span><span class="tag">Azure</span><span class="tag">Azure API Management</span><span class="tag">REST APIs</span><span class="tag">Microsoft Copilot Studio</span><span class="tag">Power BI</span><span class="tag">Jest</span><span class="tag">Jira</span><span class="tag">Confluence</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
     <section id="contact" aria-labelledby="contact-heading">
       <h2 id="contact-heading">Contact</h2>
-      <p class="muted">Want to collaborate or chat? Drop a line.</p>
-      <form class="card hover-rise" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field">
-        <input type="hidden" name="form-name" value="contact" />
-        <p class="sr-only"><label>Don’t fill this out if you're human: <input name="bot-field" /></label></p>
-        <div class="grid">
-          <div class="col-6">
-            <label class="sr-only" for="name">Name</label>
-            <input id="name" name="name" placeholder="Your name" required />
-          </div>
-          <div class="col-6">
-            <label class="sr-only" for="email">Email</label>
-            <input id="email" type="email" name="email" placeholder="you@email.com" required />
-          </div>
-          <div class="col-12">
-            <label class="sr-only" for="message">Message</label>
-            <textarea id="message" name="message" rows="5" placeholder="Tell me about your project…" required></textarea>
-          </div>
-        </div>
-        <div style="height:10px"></div>
-        <button class="primary btn" type="submit">Send</button>
-      </form>
+      <p class="muted">Want to collaborate or chat?</p>
+      <div class="card">
+        <p>Email: <a href="mailto:tahaazeemb@gmail.com">tahaazeemb@gmail.com</a></p>
+      </div>
     </section>
+
+    <footer>
+      <div class="container" style="display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap">
+        <span>© <span id="year"></span> Taha Azeem</span>
+        <span class="muted">Built with plain HTML/CSS/JS · GitHub Pages ready</span>
+      </div>
+    </footer>
   </main>
-  <footer>
-    <div class="container" style="display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap">
-      <span>© <span id="year"></span> Taha Azeem</span>
-      <span class="muted">Built with plain HTML/CSS/JS · GitHub Pages ready</span>
-    </div>
-  </footer>
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
   </script>
