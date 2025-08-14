@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Your Name — Portfolio</title>
+  <meta name="description" content="Software engineer portfolio: projects, experience, and contact." />
+  <meta property="og:title" content="Your Name — Portfolio" />
+  <meta property="og:description" content="Software engineer portfolio: projects, experience, and contact." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="/og-image.png" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='18' fill='%230a84ff'/%3E%3Ctext x='50' y='60' font-size='56' text-anchor='middle' fill='white' font-family='Arial, Helvetica, sans-serif'%3EY%3C/text%3E%3C/svg%3E" />
+  <style>
+    /* ===== CSS RESET (trimmed) ===== */
+    *, *::before, *::after { box-sizing: border-box; }
+    html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+    body { margin: 0; font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji"; line-height: 1.6; }
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+    :root {
+      --bg: #0b0c10;
+      --panel: #111218;
+      --text: #e6e6eb;
+      --muted: #a2a2b0;
+      --brand: #5b8cff; /* primary */
+      --brand-2: #9b7bff; /* accent */
+      --ring: rgba(91,140,255,.35);
+      --card: #12131a;
+      --border: #232432;
+      --success: #2ecc71;
+    }
+    @media (prefers-color-scheme: light) {
+      :root {
+        --bg: #f7f8fd; --panel: #ffffff; --text: #15161a; --muted: #525463; --brand: #2b59ff; --brand-2: #7a5cff; --ring: rgba(43,89,255,.25); --card: #ffffff; --border: #e7e7ee;
+      }
+    }
+    body { background: radial-gradient(1200px 600px at 80% -10%, rgba(91,140,255,.18), transparent 50%) , radial-gradient(800px 400px at -10% 10%, rgba(155,123,255,.18), transparent 50%), var(--bg); color: var(--text); }
+
+    /* Layout */
+    .container { max-width: 1080px; margin: 0 auto; padding: 20px; }
+    header.nav { position: sticky; top: 0; backdrop-filter: saturate(180%) blur(10px); background: color-mix(in oklab, var(--bg) 85%, transparent); border-bottom: 1px solid var(--border); z-index: 50; }
+    .nav-inner { display: flex; align-items: center; justify-content: space-between; padding: 12px 20px; }
+    .brand { display: flex; align-items: center; gap: 10px; font-weight: 700; letter-spacing: .2px; }
+    .brand-logo { width: 28px; height: 28px; border-radius: 9px; background: linear-gradient(135deg, var(--brand), var(--brand-2)); display: grid; place-items: center; color: #fff; font-size: 16px; }
+    nav a { padding: 8px 12px; border-radius: 12px; }
+    nav a:hover { background: color-mix(in oklab, var(--brand) 20%, transparent); }
+    .nav-right { display: flex; align-items: center; gap: 10px; }
+    .ghost { background: transparent; border: 1px solid var(--border); padding: 8px 12px; border-radius: 12px; }
+    .primary { background: linear-gradient(135deg, var(--brand), var(--brand-2)); color: white; border: 0; padding: 10px 14px; border-radius: 12px; box-shadow: 0 10px 20px rgba(0,0,0,.12); }
+    .primary:focus { outline: 4px solid var(--ring); }
+
+    /* Hero */
+    .hero { display: grid; grid-template-columns: 1.2fr .8fr; gap: 24px; align-items: center; padding: 56px 20px; }
+    .hero h1 { font-size: clamp(28px, 6vw, 48px); line-height: 1.1; margin: 0 0 12px; }
+    .hero p.lead { font-size: clamp(16px, 2.2vw, 20px); color: var(--muted); margin: 0 0 20px; }
+    .hero .cta { display: flex; gap: 12px; flex-wrap: wrap; }
+    .card { background: color-mix(in oklab, var(--panel) 85%, transparent); border: 1px solid var(--border); border-radius: 20px; padding: 20px; }
+    .avatar { width: 160px; height: 160px; border-radius: 24px; background: linear-gradient(135deg, var(--brand), var(--brand-2)); display: grid; place-items: center; font-size: 64px; color: #fff; margin: 0 auto; }
+
+    /* Sections */
+    section { padding: 32px 20px; }
+    section h2 { font-size: 26px; margin: 0 0 12px; }
+    .muted { color: var(--muted); }
+
+    /* Projects */
+    .grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 16px; }
+    .col-6 { grid-column: span 6; }
+    .col-4 { grid-column: span 4; }
+    .col-12 { grid-column: span 12; }
+    @media (max-width: 860px) {
+      .hero { grid-template-columns: 1fr; }
+      .col-6, .col-4 { grid-column: span 12; }
+    }
+    .project { position: relative; overflow: hidden; }
+    .project h3 { margin: 0 0 6px; font-size: 20px; }
+    .tag { display: inline-block; padding: 4px 8px; border: 1px solid var(--border); border-radius: 999px; font-size: 12px; color: var(--muted); margin-right: 6px; }
+    .project a.more { display: inline-flex; align-items: center; gap: 8px; font-weight: 600; margin-top: 10px; }
+    .project a.more svg { width: 16px; height: 16px; }
+
+    /* Experience */
+    .xp { display: grid; gap: 12px; }
+    .xp-item { padding: 16px; border: 1px solid var(--border); border-radius: 16px; background: var(--card); }
+    .xp-item h3 { margin: 0; font-size: 18px; }
+    .xp-item .meta { color: var(--muted); font-size: 14px; }
+    .xp-item ul { margin: 8px 0 0 18px; }
+
+    /* Skills */
+    .skills { display: flex; gap: 10px; flex-wrap: wrap; }
+
+    /* Footer */
+    footer { border-top: 1px solid var(--border); margin-top: 32px; padding: 20px; color: var(--muted); font-size: 14px; }
+
+    /* Utilities */
+    .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 1px, 1px); white-space: nowrap; border: 0; }
+    .row { display: flex; gap: 10px; flex-wrap: wrap; }
+    .spacer { height: 12px; }
+
+    /* Buttons */
+    .btn { display: inline-flex; align-items: center; gap: 8px; font-weight: 600; }
+    .btn svg { width: 18px; height: 18px; }
+
+    /* Focus */
+    a:focus, button:focus { outline: 4px solid var(--ring); border-radius: 12px; }
+  </style>
+  <script>
+    // Persist theme preference
+    const THEME_KEY = 'site-theme';
+    const applyTheme = (t) => document.documentElement.dataset.theme = t;
+    const saved = localStorage.getItem(THEME_KEY);
+    if (saved) applyTheme(saved);
+    function toggleTheme(){
+      const cur = document.documentElement.dataset.theme || 'auto';
+      const next = cur === 'dark' ? 'light' : (cur === 'light' ? 'auto' : 'dark');
+      applyTheme(next); localStorage.setItem(THEME_KEY, next);
+      document.getElementById('themeLabel').textContent = next.charAt(0).toUpperCase()+next.slice(1);
+    }
+  </script>
+  <style>
+    /* theme data attr (auto uses prefers-color-scheme) */
+    :root[data-theme="dark"] { color-scheme: dark; }
+    :root[data-theme="light"] { color-scheme: light; }
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Your Name",
+    "url": "https://your-domain.com",
+    "jobTitle": "Software Engineer",
+    "sameAs": ["https://github.com/yourhandle", "https://www.linkedin.com/in/yourhandle/"]
+  }
+  </script>
+</head>
+<body>
+  <header class="nav">
+    <div class="nav-inner container">
+      <a class="brand" href="#top" aria-label="Home">
+        <span class="brand-logo">Y</span>
+        <span>Your Name</span>
+      </a>
+      <nav aria-label="Primary">
+        <a href="#projects">Projects</a>
+        <a href="#experience">Experience</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <div class="nav-right">
+        <button class="ghost btn" onclick="toggleTheme()" aria-label="Toggle theme">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v1"/><path d="M12 20v1"/><path d="M3 12h1"/><path d="M20 12h1"/><path d="M5.6 5.6l.7.7"/><path d="M18 18l.7.7"/><path d="M5.6 18.4l.7-.7"/><path d="M18.4 5.6l-.7.7"/><path d="M12 8a4 4 0 1 0 4 4"/></svg>
+          <span id="themeLabel">Auto</span>
+        </button>
+        <a class="primary btn" href="#contact">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16v16H4z"/><path d="M22 7l-10 6L2 7"/></svg>
+          Contact
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main id="top" class="container">
+    <!-- HERO -->
+    <section class="hero" aria-labelledby="intro-heading">
+      <div>
+        <h1 id="intro-heading">Hi, I'm <span style="background: linear-gradient(135deg,var(--brand),var(--brand-2)); -webkit-background-clip: text; background-clip: text; color: transparent;">Your Name</span>.</h1>
+        <p class="lead">Software engineer focused on backend systems, APIs, and AI-powered developer tools. I build things that remove friction and ship value fast.</p>
+        <div class="cta">
+          <a class="primary btn" href="https://github.com/yourhandle" target="_blank" rel="noopener">GitHub
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3"/><path d="M14 22v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 17.5 3.77 5.07 5.07 0 0 0 17.41 1S16.09.65 13 2.48a13.38 13.38 0 0 0-8 0C2.91.65 1.59 1 1.59 1a5.07 5.07 0 0 0-.09 2.77A5.44 5.44 0 0 0 0 8.52c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 5.5 19.13V22"/></svg>
+          </a>
+          <a class="ghost btn" href="/resume.pdf" target="_blank" rel="noopener">Resume
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg>
+          </a>
+        </div>
+      </div>
+      <aside class="card" aria-label="Profile">
+        <div class="avatar" aria-hidden="true">Y</div>
+        <div class="spacer"></div>
+        <p class="muted" style="text-align:center">Based in Your City · Open to SWE Intern/New Grad</p>
+        <div class="row" style="justify-content:center">
+          <a class="tag" href="https://www.linkedin.com/in/yourhandle/" target="_blank" rel="noopener">LinkedIn</a>
+          <a class="tag" href="mailto:you@email.com">Email</a>
+          <a class="tag" href="#contact">Say hi</a>
+        </div>
+      </aside>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects" aria-labelledby="projects-heading">
+      <h2 id="projects-heading">Featured Projects</h2>
+      <p class="muted">A few things I’ve shipped recently.</p>
+      <div class="grid">
+        <article class="project card col-6">
+          <h3>DevGhost — CLI Memory for Developers</h3>
+          <p>Logs every terminal command with context, output, and timestamps into a searchable memory layer. Includes a modern web UI and AI-assisted explanations of commands.</p>
+          <div>
+            <span class="tag">Python</span><span class="tag">FastAPI</span><span class="tag">SQLite</span><span class="tag">React</span>
+          </div>
+          <a class="more" href="https://github.com/yourhandle/devghost" target="_blank" rel="noopener">View repo
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
+          </a>
+        </article>
+        <article class="project card col-6">
+          <h3>DataHub AI Assistant</h3>
+          <p>Agentic assistant that streamlines data integration workflows by automating repetitive steps and generating API scaffolds with strong code coverage.</p>
+          <div>
+            <span class="tag">Node.js</span><span class="tag">TypeScript</span><span class="tag">Copilot Studio</span><span class="tag">Jest</span>
+          </div>
+          <a class="more" href="#" aria-disabled="true">Private (demo upon request)
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
+          </a>
+        </article>
+        <article class="project card col-4">
+          <h3>Job Metrics Dashboard</h3>
+          <p>Analytics for job runs: success/failure, bottlenecks, and long-running jobs. Helped leadership triage and plan capacity.</p>
+          <div><span class="tag">Power BI</span><span class="tag">SQL</span></div>
+          <a class="more" href="#">Case study</a>
+        </article>
+        <article class="project card col-4">
+          <h3>RPN Calculator</h3>
+          <p>Interpreter with operator precedence and validation; supports custom functions and memoization.</p>
+          <div><span class="tag">Python</span><span class="tag">Algorithms</span></div>
+          <a class="more" href="#">Read more</a>
+        </article>
+        <article class="project card col-4">
+          <h3>Prefix Sums Playground</h3>
+          <p>Interactive visualizer for classic subarray problems, from two-sum variants to range updates.</p>
+          <div><span class="tag">React</span><span class="tag">DSA</span></div>
+          <a class="more" href="#">Live demo</a>
+        </article>
+      </div>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section id="experience" aria-labelledby="xp-heading">
+      <h2 id="xp-heading">Experience</h2>
+      <div class="xp">
+        <div class="xp-item">
+          <h3>Software Engineer Intern — The Estée Lauder Companies</h3>
+          <div class="meta">Summer 2025 · New York, NY</div>
+          <ul>
+            <li>Built backend services and data integrations; automated workflows for new product launches.</li>
+            <li>Integrated an AI assistant into a React/Node stack; maintained 80%+ unit test coverage.</li>
+            <li>Shipped a developer portal to help non-engineers explore APIs securely.</li>
+          </ul>
+        </div>
+        <div class="xp-item">
+          <h3>Teaching Assistant — Northwestern CS</h3>
+          <div class="meta">2024–2025</div>
+          <ul>
+            <li>Led labs and office hours; mentored students in data structures, DP, and debugging.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" aria-labelledby="about-heading">
+      <h2 id="about-heading">About</h2>
+      <p>Second-year CS student at Northwestern. I enjoy building developer tools, backend systems, and clean UIs. Recently, I’ve been focused on making CLI workflows smarter with AI and improving data platform ergonomics.</p>
+      <p class="muted">Outside of code: plane spotting, biking Sheridan Road, and curating a small fragrance collection.</p>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" aria-labelledby="contact-heading">
+      <h2 id="contact-heading">Contact</h2>
+      <p class="muted">Want to collaborate or chat? Drop a line.</p>
+      <form class="card" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+        <input type="hidden" name="form-name" value="contact" />
+        <p class="sr-only">
+          <label>Don’t fill this out if you're human: <input name="bot-field" /></label>
+        </p>
+        <div class="grid">
+          <div class="col-6">
+            <label class="sr-only" for="name">Name</label>
+            <input id="name" name="name" placeholder="Your name" required style="width:100%; padding:12px 14px; border-radius:12px; border:1px solid var(--border); background: var(--card); color: var(--text)" />
+          </div>
+          <div class="col-6">
+            <label class="sr-only" for="email">Email</label>
+            <input id="email" type="email" name="email" placeholder="you@email.com" required style="width:100%; padding:12px 14px; border-radius:12px; border:1px solid var(--border); background: var(--card); color: var(--text)" />
+          </div>
+          <div class="col-12">
+            <label class="sr-only" for="message">Message</label>
+            <textarea id="message" name="message" placeholder="Tell me about your project…" rows="5" required style="width:100%; padding:12px 14px; border-radius:12px; border:1px solid var(--border); background: var(--card); color: var(--text)"></textarea>
+          </div>
+        </div>
+        <div class="spacer"></div>
+        <button class="primary btn" type="submit">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 2L11 13"/><path d="M22 2l-7 20-4-9-9-4 20-7z"/></svg>
+          Send
+        </button>
+      </form>
+    </section>
+
+    <footer>
+      <div class="container" style="display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap;">
+        <span>© <span id="year"></span> Your Name</span>
+        <span class="muted">Built with plain HTML/CSS/JS · Deployed on GitHub Pages/Netlify</span>
+      </div>
+    </footer>
+  </main>
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
